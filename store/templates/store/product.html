@@ -1,0 +1,40 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-6">
+		<img src="{{product.imageURL}}" class="img-fluid" alt="{{product.name}}">
+	</div>
+
+	<div class="col-md-6">
+		<br>
+		<h2>{{product.name}}</h2>
+		<hr>
+		<h4 class="text-warning">AED {{product.price}}</h4>
+		<br>
+		<p>{{product.description}}</p>
+		<br>
+
+		{% if product.digital == False %}
+			<p>✅ Physical Product — Shipping available across UAE</p>
+		{% else %}
+			<p>✅ Digital Product — Instant delivery</p>
+		{% endif %}
+
+		<br>
+		<button 
+			data-product="{{product.id}}" 
+			data-action="add" 
+			class="btn btn-warning btn-lg update-cart">
+			Add to Cart 🛒
+		</button>
+
+		<a href="{% url 'store' %}" class="btn btn-outline-secondary btn-lg ml-2">
+			← Back to Store
+		</a>
+	</div>
+</div>
+
+{% endblock content %}

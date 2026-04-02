@@ -1,0 +1,36 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+	<div class="col-md-4">
+		<br>
+		<h2 class="text-center mb-4">Login</h2>
+
+		<form method="POST" action="">
+			{% csrf_token %}
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" name="username" class="form-control" placeholder="Enter username" required>
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" name="password" class="form-control" placeholder="Enter password" required>
+			</div>
+
+			{% if form.errors %}
+				<div class="alert alert-danger">
+					Invalid username or password. Please try again.
+				</div>
+			{% endif %}
+
+			<button type="submit" class="btn btn-warning btn-block">Login</button>
+		</form>
+
+		<br>
+		<p class="text-center">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+	</div>
+</div>
+
+{% endblock content %}
